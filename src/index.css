@@ -1,57 +1,76 @@
 /* ============================================
-   Modern Normalize (optimized)
+   Modern Normalize (оптимизированный)
+   
+   Нормализация стилей браузера:
+   - Унификация box-sizing
+   - Удаление дефолтных отступов
+   - Настройка базовых элементов форм
+   - Исправление кроссбраузерных ошибок
    ============================================ */
 
-/* Box sizing */
+/* ========== BOX-SIZING ========== */
+/* 
+  Устанавливаем border-box для всех элементов,
+  чтобы padding и border входили в общую ширину/высоту
+*/
 *, *::before, *::after {
   box-sizing: border-box;
 }
 
-/* Remove default margin */
+/* ========== УДАЛЕНИЕ ДЕФОЛТНЫХ ОТСТУПОВ ========== */
+/* Обнуляем margin для часто используемых элементов */
 body, h1, h2, h3, h4, h5, h6, p, figure {
   margin: 0;
 }
 
-/* Base styles */
+/* ========== БАЗОВЫЕ СТИЛИ HTML ========== */
 html {
   line-height: 1.15;
+  /* Отключаем автоматическое масштабирование текста на мобильных */
   -webkit-text-size-adjust: 100%;
 }
 
+/* ========== BODY СТИЛИ ========== */
 body {
   margin: 0;
+  /* Система шрифтов для кроссбраузерной совместимости */
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
   background-color: #fff;
 }
 
-/* Headings fix */
+/* ========== ЗАГОЛОВКИ ========== */
+/* Исправление неправильного стандартного размера h1 */
 h1 {
   font-size: 2em;
   font-weight: inherit;
 }
 
-/* Lists */
+/* ========== СПИСКИ ========== */
+/* Удаляем padding и список-маркеры по умолчанию */
 ul, ol {
   padding: 0;
   margin: 0;
   list-style: none;
 }
 
-/* Links */
+/* ========== ССЫЛКИ ========== */
+/* Убираем подчёркивание и наследуем цвет текста */
 a {
   background-color: transparent;
   text-decoration: none;
   color: inherit;
 }
 
-/* Images */
+/* ========== ИЗОБРАЖЕНИЯ ========== */
+/* Убираем border, ограничиваем максимальную ширину */
 img {
   border-style: none;
   max-width: 100%;
   display: block;
 }
 
-/* Forms */
+/* ========== ФОРМЫ И ЭЛЕМЕНТЫ ВВОДА ========== */
+/* Наследуем шрифт, размер и цвет текста у form элементов */
 button,
 input,
 select,
@@ -63,17 +82,20 @@ textarea {
   margin: 0;
 }
 
+/* Исправление переполнения контента в button и input */
 button,
 input {
   overflow: visible;
 }
 
+/* Удаляем трансформацию текста для кнопок */
 button,
 select {
   text-transform: none;
 }
 
-/* Remove Firefox inner padding */
+/* ========== FIREFOX FIX ========== */
+/* Удаляем внутренний padding и border на кнопках в Firefox */
 button::-moz-focus-inner,
 [type="button"]::-moz-focus-inner,
 [type="reset"]::-moz-focus-inner,
@@ -82,18 +104,22 @@ button::-moz-focus-inner,
   border: 0;
 }
 
+/* ========== СТИЛИ КНОПОК ========== */
 button {
   cursor: pointer;
   background: none;
   border: none;
 }
 
-/* Inputs */
+/* ========== ПОИСК (SEARCH INPUT) ========== */
+/* Исправляем appearance для input типа "search" */
 [type="search"] {
   -webkit-appearance: textfield;
+  appearance: textfield;
   outline-offset: -2px;
 }
 
+/* Убираем дефолтное украшение search input в webkit браузерах */
 [type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }

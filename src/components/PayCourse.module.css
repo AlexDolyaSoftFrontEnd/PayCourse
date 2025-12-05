@@ -1,91 +1,191 @@
-/* ===========================
-   ОБОЛОНКА
-=========================== */
+/* ============================================
+   ОСНОВНАЯ ОБОЛОНКА КОМПОНЕНТА PAYCOURSE
+   
+   Главный контейнер с градиентным фоном,
+   занимает всю высоту экрана и содержит
+   все содержимое платежной формы.
+   ============================================ */
+
+/* ========== ОСНОВНОЙ КОНТЕЙНЕР ========== */
+/* 
+  Полноэкранный контейнер с градиентом:
+  - width: 100% - занимает всю ширину
+  - min-height: 100vh - минимум высота экрана
+  - radial-gradient - круговой градиент тирквуаза→синего
+  - will-change: transform - оптимизация для анимаций
+*/
 .pay-course {
   width: 100%;
   min-height: 100vh;
   padding: 48px 16px 40px;
   background: radial-gradient(
     circle at top left,
-    #2ddab3 0%,
-    #16c7a8 35%,
-    #04b2b4 70%,
-    #0f5c76 100%
+    #2ddab3 0%,      /* светлый тирквуаз */
+    #16c7a8 35%,     /* средний тирквуаз */
+    #04b2b4 70%,     /* темный тирквуаз */
+    #0f5c76 100%     /* темно-синий угол */
   );
   color: #ffffff;
   font-family: "Inter", system-ui, sans-serif;
   display: flex;
   justify-content: center;
+  align-items: flex-start;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
+/* ========== ВНУТРЕННИЙ КОНТЕЙНЕР ========== */
+/* 
+  Ограничивает максимальную ширину контента,
+  центрирует содержимое на больших экранах
+*/
 .pay-course__container {
   width: 100%;
   max-width: 900px;
 }
 
-/* ===========================
-   ЗАГОЛОВОК
-=========================== */
+/* ============================================
+   ЗАГОЛОВОК СТРАНИЦЫ
+   ============================================ */
+
+/* ========== БЛОК ЗАГОЛОВКА ========== */
+/* Отступ от верхнего элемента */
 .pay-course__header {
   margin-bottom: 26px;
 }
 
+/* ========== ЗАГОЛОВОК "Сплатити курс" ========== */
+/* 
+  Большой жирный заголовок с тенью:
+  - font-size: 54px - крупный размер
+  - font-weight: 800 - максимально жирный
+  - text-shadow - эффект глубины текста
+  - -webkit-text-size-adjust - фиксит масштабирование на Safari iOS
+*/
 .pay-course__title {
   margin: 0;
   font-size: 54px;
   font-weight: 800;
   line-height: 1.05;
   text-shadow: 0 4px 0 rgba(0, 0, 0, 0.3);
+  -webkit-text-size-adjust: 100%;
 }
 
-/* ===========================
-   КАРТОЧКА
-=========================== */
+/* ============================================
+   ИНФОРМАЦИОННАЯ КАРТОЧКА
+   
+   Темная карточка с информацией о том,
+   что курс можно оплатить целиком или частями.
+   ============================================ */
+
+/* ========== КОНТЕЙНЕР КАРТОЧКИ ========== */
+/* 
+  Стилизованная информационная карточка:
+  - background: #372548 - темно-фиолетовый
+  - border-radius: 36px - скругленные углы
+  - box-shadow - глубокая тень для выделения
+  - will-change: box-shadow - оптимизация для плавности
+*/
 .pay-course__card {
   background: #372548;
   padding: 32px;
   border-radius: 36px;
   box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
   margin-bottom: 40px;
+  will-change: box-shadow;
 }
 
+/* ========== ТЕКСТ КАРТОЧКИ ========== */
+/* Описание возможностей оплаты */
 .pay-course__text {
   margin: 0 0 14px;
   line-height: 1.55;
   font-size: 17px;
 }
 
+/* ========== ССЫЛКИ В ТЕКСТЕ ========== */
+/* 
+  Стилизация ссылок на оферту и политику:
+  - color: #ffd75a - жёлтый цвет
+  - text-underline-offset: 3px - отступ подчёркивания
+  - transition - плавное изменение цвета при наведении
+*/
 .pay-course__link {
   color: #ffd75a;
   text-decoration: underline;
   text-underline-offset: 3px;
+  transition: color 0.2s ease;
 }
 
-/* ===========================
-   ЧЕКБОКСЫ
-=========================== */
+/* ========== ЭФФЕКТ ПРИ НАВЕДЕНИИ НА ССЫЛКУ ========== */
+.pay-course__link:hover {
+  color: #ffee95;
+}
+
+
+/* ============================================
+   ЧЕКБОКСЫ УСЛОВИЙ СОГЛАСИЯ
+   
+   Кастомные чекбоксы для согласия пользователя.
+   Скрытый input с красивым визуальным представлением.
+   ============================================ */
+
+/* ========== КОНТЕЙНЕР СПИСКА ЧЕКБОКСОВ ========== */
+/* Список условий согласия */
 .pay-course__checks {
   list-style: none;
   padding: 0;
   margin: 0 0 28px;
 }
 
+/* ========== ОТСТУП МЕЖДУ ЭЛЕМЕНТАМИ ========== */
+/* Вертикальный отступ между чекбоксами */
 .pay-course__check-item + .pay-course__check-item {
   margin-top: 18px;
 }
 
+/* ========== ОСНОВНОЙ КОНТЕЙНЕР ЧЕКБОКСА ========== */
+/* 
+  Флексбокс для выравнивания чекбокса и текста:
+  - display: flex - горизонтальное расположение
+  - gap: 14px - расстояние между элементами
+  - align-items: flex-start - выравнивание вверх
+  - transition - плавное изменение при наведении
+  - user-select: none - текст не выделяется
+*/
 .pay-course__check {
   display: flex;
   gap: 14px;
   cursor: pointer;
   align-items: flex-start;
+  transition: transform 0.1s ease;
+  user-select: none;
 }
 
+/* ========== ЭФФЕКТ ПРИ НАВЕДЕНИИ ========== */
+.pay-course__check:hover {
+  transform: scale(1.01);
+}
+
+/* ========== СКРЫТЫЙ INPUT ЧЕКБОКС ========== */
+/* 
+  Скрываем стандартный чекбокс браузера,
+  используем только его state через CSS :checked
+*/
 .pay-course__input {
   position: absolute;
   opacity: 0;
 }
 
+/* ========== ВИЗУАЛЬНЫЙ ЧЕКБОКС (КВАДРАТ) ========== */
+/* 
+  Кастомный внешний вид чекбокса:
+  - width/height: 24px - квадратный размер
+  - border-radius: 6px - слегка скругленные углы
+  - border: 2px solid rgba(255, 255, 255, 0.65) - полупрозрачная граница
+  - transition: all 0.16s ease-out - гладкая анимация всех свойств
+  - will-change: border-color, background - оптимизация для производительности
+*/
 .pay-course__box {
   width: 24px;
   height: 24px;
@@ -95,19 +195,33 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: 0.16s ease-out;
+  transition: all 0.16s ease-out;
   flex-shrink: 0;
+  will-change: border-color, background;
 }
 
+/* ========== ЭФФЕКТ ПРИ НАВЕДЕНИИ ========== */
+/* Тень при наведении на чекбокс */
 .pay-course__check:hover .pay-course__box {
   box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.35);
 }
 
+/* ========== ОТМЕЧЕННЫЙ ЧЕКБОКС ========== */
+/* 
+  Стили для активного (отмеченного) чекбокса:
+  - background: #ffee95 - жёлтый фон
+  - border-color: #ffee95 - жёлтая граница
+*/
 .pay-course__input:checked + .pay-course__box {
   background: #ffee95;
   border-color: #ffee95;
 }
 
+/* ========== ГАЛОЧКА ВНУТРИ ЧЕКБОКСА ========== */
+/* 
+  Добавляем галочку через ::after pseudo-element,
+  когда input отмечен
+*/
 .pay-course__input:checked + .pay-course__box::after {
   content: "✓";
   font-size: 14px;
@@ -115,13 +229,30 @@
   color: #3b2b2b;
 }
 
-/* ===========================
+
+/* ============================================
    КНОПКА "Оплатити курс"
-=========================== */
+   
+   Главная CTA кнопка с приемными эффектами.
+   Активируется только когда все условия отмечены.
+   ============================================ */
+
+/* ========== КОНТЕЙНЕР КНОПКИ ========== */
+/* Отступы вокруг кнопки */
 .pay-course__cta {
   margin: 32px 0 36px;
 }
 
+/* ========== СТИЛИЗАЦИЯ КНОПКИ ========== */
+/* 
+  Яркая жёлтая кнопка с 3D эффектом:
+  - width: 300px - фиксированная ширина
+  - background: linear-gradient - жёлтый градиент
+  - box-shadow: 0 14px 0 #e6ce6f - 3D эффект нижней тени
+  - cursor: pointer - указатель мыши
+  - will-change: transform, box-shadow - оптимизация для анимаций
+  - -webkit-tap-highlight-color: transparent - убирает блеск на мобилях
+*/
 .pay-course__button {
   width: 300px;
   padding: 18px 32px;
@@ -135,27 +266,61 @@
   cursor: pointer;
   box-shadow: 0 14px 0 #e6ce6f, 0 24px 26px rgba(0, 0, 0, 0.35);
   transition: 0.15s ease-out;
+  will-change: transform, box-shadow;
+  -webkit-tap-highlight-color: transparent;
 }
 
+/* ========== ЭФФЕКТ ПРИ НАВЕДЕНИИ ========== */
+/* 
+  Кнопка немного "опускается" при наведении,
+  создавая ощущение нажатия
+*/
 .pay-course__button:hover:not(.pay-course__button--disabled) {
   transform: translateY(2px);
   background: linear-gradient(135deg, #fffac9, #ffef96);
 }
 
+/* ========== ЭФФЕКТ ПРИ АКТИВАЦИИ (КЛИКЕ) ========== */
+/* 
+  Кнопка глубже "опускается" при клике,
+  3D тень становится меньше
+*/
 .pay-course__button:active:not(.pay-course__button--disabled) {
   transform: translateY(6px) scale(0.97);
   box-shadow: 0 8px 0 #e6ce6f, 0 16px 20px rgba(0, 0, 0, 0.3);
 }
 
+/* ========== ОТКЛЮЧЁННОЕ СОСТОЯНИЕ ========== */
+/* 
+  Серая, неактивная кнопка:
+  - opacity: 0.55 - полупрозрачность
+  - cursor: not-allowed - запрещающий курсор
+*/
 .pay-course__button--disabled {
   opacity: 0.55;
   cursor: not-allowed;
   box-shadow: 0 10px 0 #bba85f, 0 14px 20px rgba(0, 0, 0, 0.22);
 }
 
-/* ===========================
-   ТOAST УСПЕХА
-=========================== */
+
+/* ============================================
+   TOAST УВЕДОМЛЕНИЕ ОБ УСПЕХЕ
+   
+   Плавающее уведомление, появляется в правом
+   верхнем углу при успешной оплате.
+   ============================================ */
+
+/* ========== ОСНОВНОЙ КОНТЕЙНЕР TOAST ========== */
+/* 
+  Фиксированный элемент (не прокручивается):
+  - position: fixed - привязано к экрану
+  - top: 20px; right: 20px - позиция в углу
+  - background: #1f8e4d - зелёный цвет успеха
+  - z-index: 9999 - над всеми элементами
+  - animation: fadeIn - плавное появление
+  - will-change: transform - оптимизация для анимаций
+  - backdrop-filter - разморозить фон (Safari)
+*/
 .pay-course__toast {
   position: fixed;
   top: 20px;
@@ -170,18 +335,29 @@
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
   z-index: 9999;
   animation: fadeIn 0.25s ease-out;
+  will-change: transform;
 }
 
+/* ========== ИКОНКА ГАЛОЧКИ ========== */
+/* Символ ✔ рядом с текстом успеха */
 .pay-course__toast-icon {
   font-weight: 700;
   font-size: 18px;
 }
 
+/* ========== ТЕКСТ СООБЩЕНИЯ ========== */
+/* Текстовое содержимое уведомления */
 .pay-course__toast-text {
   font-size: 15px;
   line-height: 1.4;
 }
 
+/* ========== КНОПКА ЗАКРЫТИЯ ========== */
+/* 
+  Кнопка X для закрытия toast вручную:
+  - background: rgba(255, 255, 255, 0.25) - полупрозрачный фон
+  - border-radius: 6px - скругленные углы
+*/
 .pay-course__toast-close {
   background: rgba(255, 255, 255, 0.25);
   border: none;
@@ -192,10 +368,17 @@
   cursor: pointer;
 }
 
+/* ========== ЭФФЕКТ ПРИ НАВЕДЕНИИ НА X ========== */
+/* Кнопка становится светлее при наведении */
 .pay-course__toast-close:hover {
   background: rgba(255, 255, 255, 0.4);
 }
 
+/* ============================================
+   АНИМАЦИЯ ПОЯВЛЕНИЯ TOAST
+   
+   Элемент плавно появляется с масштабированием
+   ============================================ */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -207,9 +390,23 @@
   }
 }
 
-/* ===========================
-   MODAL
-=========================== */
+
+/* ============================================
+   МОДАЛЬНОЕ ОКНО ОПЛАТЫ
+   
+   Полноэкранный модал с формой оплаты.
+   Появляется поверх основного контента.
+   ============================================ */
+
+/* ========== КОНТЕЙНЕР МОДАЛА ========== */
+/* 
+  Полноэкранный оверлей с модальным окном:
+  - position: fixed - полностью фиксирован на экране
+  - inset: 0 - занимает весь видимый экран (все стороны = 0)
+  - z-index: 9998 - находится над контентом, но под toast
+  - display: flex - центрирует модальное окно
+  - backdrop-filter: подготовка для улучшенного размытия
+*/
 .modal {
   position: fixed;
   inset: 0;
@@ -219,13 +416,32 @@
   align-items: center;
 }
 
+/* ========== ПОЛУПРОЗРАЧНЫЙ ФОНОВЫЙ ОВЕРЛЕЙ ========== */
+/* 
+  Затемняющий фон за модалом:
+  - position: absolute; inset: 0 - занимает весь родителя
+  - background: rgba(4, 16, 32, 0.6) - полупрозрачный чёрный
+  - backdrop-filter: blur(4px) - размывает фон позади
+  - -webkit-backdrop-filter: blur(4px) - поддержка Safari
+*/
 .modal__overlay {
   position: absolute;
   inset: 0;
   background: rgba(4, 16, 32, 0.6);
   backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }
 
+/* ========== ОКНО МОДАЛА (КАРТОЧКА) ========== */
+/* 
+  Саме окно с формой оплаты:
+  - position: relative - выше оверлея
+  - max-width: 460px - максимальная ширина
+  - radial-gradient - фиолетовый градиент
+  - animation: modalFade - плавное появление
+  - will-change: transform - оптимизация для анимаций
+  - -webkit-font-smoothing - гладкий текст в Safari
+*/
 .modal__window {
   position: relative;
   width: 92%;
@@ -236,8 +452,15 @@
   color: #fff;
   box-shadow: 0 22px 40px rgba(0, 0, 0, 0.7);
   animation: modalFade 0.22s ease-out;
+  will-change: transform;
+  -webkit-font-smoothing: antialiased;
 }
 
+/* ============================================
+   АНИМАЦИЯ ПОЯВЛЕНИЯ МОДАЛА
+   
+   Модальное окно скользит вверх со сжатием
+   ============================================ */
 @keyframes modalFade {
   from {
     opacity: 0;
@@ -249,7 +472,14 @@
   }
 }
 
-/* Крестик */
+
+/* ========== КНОПКА ЗАКРЫТИЯ МОДАЛА (КРЕСТИК) ========== */
+/* 
+  Кнопка X в верхнем правом углу модала:
+  - position: absolute; top: 10px; right: 14px - позиция
+  - background: rgba(0, 0, 0, 0.35) - полупрозрачный чёрный фон
+  - border-radius: 999px - круглая кнопка
+*/
 .modal__close-icon {
   position: absolute;
   top: 10px;
@@ -264,21 +494,40 @@
   cursor: pointer;
 }
 
+/* ========== ЗАГОЛОВОК МОДАЛА ========== */
+/* Название "Оплата курсу" */
 .modal__title {
   margin: 0 0 10px;
   font-size: 22px;
   font-weight: 700;
 }
 
-/* ===========================
-   ФОРМА В МОДАЛКЕ
-=========================== */
+/* ============================================
+   ФОРМА В МОДАЛЬНОМ ОКНЕ
+   
+   Содержит поля для ввода платёжных данных:
+   сумма, имя, email, номер карты, дата, CVC
+   ============================================ */
+
+/* ========== КОНТЕЙНЕР ФОРМЫ ========== */
+/* 
+  Вертикальное расположение всех полей:
+  - display: flex; flex-direction: column - один под другим
+  - gap: 14px - отступ между полями
+*/
 .modal__form {
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
 
+/* ========== ПОЛЕ ВВОДА (LABEL + INPUT) ========== */
+/* 
+  Контейнер для каждого поля:
+  - display: flex; flex-direction: column - метка сверху, input снизу
+  - gap: 6px - маленький отступ между ними
+  - width: 100% - занимает всю ширину
+*/
 .modal__field {
   display: flex;
   flex-direction: column;
@@ -286,11 +535,23 @@
   gap: 6px;
 }
 
+/* ========== МЕТКА ПОЛЯ (LABEL TEXT) ========== */
+/* Описание поля (например, "Сума оплати (грн)") */
 .modal__label {
   font-size: 14px;
   opacity: 0.9;
 }
 
+/* ========== INPUT ПОЛЕ ВВОДА ========== */
+/* 
+  Стилизированное поле ввода:
+  - border: 1px solid rgba(255, 255, 255, 0.25) - светлая граница
+  - background: rgba(10, 5, 30, 0.85) - тёмный фиолетовый фон
+  - color: #ffffff - белый текст
+  - outline: none - убираем дефолтный outline
+  - transition: все 0.2s ease - плавное изменение при фокусе
+  - -webkit-appearance: none - убираем дефолты на мобилях
+*/
 .modal__input {
   padding: 10px 12px;
   border-radius: 10px;
@@ -300,13 +561,29 @@
   font-size: 15px;
   outline: none;
   width: 100%;
+  transition: all 0.2s ease;
+  -webkit-appearance: none;
+  appearance: none;
 }
 
+/* ========== СОСТОЯНИЕ ФОКУСА INPUT ========== */
+/* 
+  При клике на поле ввода:
+  - border-color: #2ddab3 - яркая тирквуаза граница
+  - box-shadow - свечение границы
+*/
 .modal__input:focus {
   border-color: #2ddab3;
   box-shadow: 0 0 0 1px rgba(45, 218, 179, 0.8);
 }
 
+/* ========== КОНТЕЙНЕР ДЛЯ ДВУ ПОЛ В ОДНОЙ СТРОКЕ ========== */
+/* 
+  Для даты (MM/YY) и CVC, которые рядом:
+  - display: flex - горизонтальное расположение
+  - gap: 14px - отступ между полями
+  - .modal__field { flex: 1 } - равномерное распределение
+*/
 .modal__row {
   display: flex;
   gap: 14px;
@@ -317,9 +594,19 @@
   flex: 1;
 }
 
-/* ===========================
-   КНОПКИ
-=========================== */
+
+/* ============================================
+   КНОПКИ ДЕЙСТВИЙ В МОДАЛЕ
+   
+   Два кнопки: подтвердить оплату и отменить
+   ============================================ */
+
+/* ========== КОНТЕЙНЕР КНОПОК ========== */
+/* 
+  Вертикальное расположение кнопок:
+  - display: flex; flex-direction: column - одна под другой
+  - gap: 10px - отступ между кнопками
+*/
 .modal__actions {
   display: flex;
   flex-direction: column;
@@ -327,6 +614,15 @@
   margin-top: 14px;
 }
 
+/* ========== БАЗОВЫЕ СТИЛИ КНОПОК ========== */
+/* 
+  Общие стили для обеих кнопок:
+  - width: 100% - занимает всю ширину
+  - border-radius: 999px - круглые края
+  - font-weight: 700 - жирный текст
+  - transition: all 0.2s ease - плавные эффекты
+  - -webkit-tap-highlight-color: transparent - убирает блеск на мобилях
+*/
 .modal__button {
   width: 100%;
   padding: 12px 14px;
@@ -335,47 +631,98 @@
   font-size: 15px;
   font-weight: 700;
   cursor: pointer;
+  transition: all 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
 }
 
+/* ========== ОСНОВНАЯ КНОПКА (ПОДТВЕРДИТЬ) ========== */
+/* 
+  Активная кнопка оплаты:
+  - background: linear-gradient - тирквуаз градиент
+  - color: #122024 - тёмный текст контрастирует с светлым фоном
+*/
 .modal__button--primary {
   background: linear-gradient(135deg, #2ddab3, #00b7a8);
   color: #122024;
 }
 
+/* ========== ЭФФЕКТ ПРИ НАВЕДЕНИИ НА PRIMARY КНОПКУ ========== */
+/* Кнопка светлеет и немного масштабируется при наведении */
 .modal__button--primary:hover {
   background: linear-gradient(135deg, #30f1c5, #00c7b6);
+  transform: translateY(-1px);
 }
 
+/* ========== ЭФФЕКТ ПРИ АКТИВАЦИИ PRIMARY КНОПКИ ========== */
+.modal__button--primary:active {
+  transform: translateY(0);
+}
+
+/* ========== ВТОРИЧНАЯ КНОПКА (ОТМЕНИТЬ) ========== */
+/* 
+  Нейтральная кнопка без фиолетовой заливки:
+  - background: transparent - прозрачный фон
+  - border: 1px solid rgba(255, 255, 255, 0.4) - едва видимая граница
+*/
 .modal__button--secondary {
   background: transparent;
   color: #fff;
   border: 1px solid rgba(255, 255, 255, 0.4);
 }
 
+/* ========== ЭФФЕКТ ПРИ НАВЕДЕНИИ НА SECONDARY КНОПКУ ========== */
+/* Небольшая полупрозрачная подсветка и масштабирование */
 .modal__button--secondary:hover {
   background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-1px);
 }
 
-/* ===========================
-   АДАПТИВ
-=========================== */
+/* ========== ЭФФЕКТ ПРИ АКТИВАЦИИ SECONDARY КНОПКИ ========== */
+.modal__button--secondary:active {
+  transform: translateY(0);
+}
+
+
+/* ============================================
+   АДАПТИВНЫЕ СТИЛИ (MOBILE OPTIMIZATION)
+   
+   Оптимизация интерфейса для мобильных устройств
+   ============================================ */
+
+/* ========== ТОЧКА РАЗРЫВА: ЭКРАНЫ ДО 600PX ========== */
 @media (max-width: 600px) {
+  /* ========== ЗАГОЛОВОК ========== */
+  /* На мобильных заголовок меньше */
   .pay-course__title {
     font-size: 40px;
   }
 
+  /* ========== МОДАЛЬНОЕ ОКНО ========== */
+  /* Уменьшаем padding модала для экономии места */
   .modal__window {
     padding: 20px 18px;
   }
 
+  /* ========== ПОЛЯ С ДАТОЙ И CVC ========== */
+  /* 
+    На мобильных дата (MM/YY) и CVC расположены
+    вертикально (один под другим), а не рядом
+  */
   .modal__row {
     flex-direction: column;
   }
 
+  /* ========== КНОПКА ОПЛАТЫ ========== */
+  /* На мобильных кнопка занимает всю ширину */
   .pay-course__button {
     width: 100%;
   }
 
+  /* ========== TOAST УВЕДОМЛЕНИЕ ========== */
+  /* 
+    Toast растягивается на мобильных устройствах,
+    оставляя отступы слева и справа
+  */
   .pay-course__toast {
     left: 12px;
     right: 12px;
