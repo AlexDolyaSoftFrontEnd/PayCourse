@@ -1,7 +1,18 @@
+/**
+ * Vite Configuration for PayCourse
+ * 
+ * Optimized build configuration with:
+ * - Code splitting and vendor bundling
+ * - Asset organization by type
+ * - Production minification with console removal
+ * - Development server with HMR
+ * 
+ * @see https://vite.dev/config/
+ */
+
 import react from '@vitejs/plugin-react-swc'
 import { defineConfig } from 'vite'
 
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
   build: {
@@ -50,7 +61,7 @@ export default defineConfig({
     port: 4173,
   },
   define: {
-    __DEV__: JSON.stringify(process.env.NODE_ENV === 'development'),
+    __DEV__: 'true',
   },
   esbuild: {
     logLevel: 'silent',
